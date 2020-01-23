@@ -33,46 +33,140 @@ header{
 
   display:flex;
   align-items:center;
+  justify-content:space-between;
 }
 
-header img {
+header img{
     height: 27px;
     margin-right:9px;
 }
 
+.logo{
+  height:24px; 
+  margin-right:10px;
+}
+
+.logo-wrap{
+  display:flex;
+  align-items:center;
+}
+
+.edit-username{
+  display:flex;
+  align-items:center;
+}
+
+.name-button{
+  height:29px;
+  margin:0 6px;
+  background:transparent;
+  color:white;
+  font-size:18px;
+  padding:4px;
+  cursor:pointer;
+  border:none;
+  outline:none;
+  border-radius:4px;
+}
+
+.name-input{
+  color:white;
+  height:31px;
+  border:1px solid white;
+  border-radius:14px;
+  padding-left:12px;
+  background:pink;
+  padding-bottom:2px;
+  font-size:12px;
+  outline:none;
+}
+
+.username{
+  display:flex;
+  align-items:center;
+  margin-right:12px;
+  font-size:1.1rem;
+}
+
+
+.text-input-wrap{
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  height:48px;
+  border-top:2px solid purple;
+  background:rgba(255,255,255,0.6);
+}
+
 .text-input{
     position:absolute;
-    bottom:0;
+    bottom:1px;
     left:0;
     width:100%;
-    height:42px;
-    border-top:2px solid purple;
-    background:rgba(255, 255, 255, 0.6);
+    height:40px;
+    border:2px solid white;
+    background:rgba(250,150,150);
 }
 
 input{
     position:absolute; 
-    left:6px;
-    top:6px;
+    left:2%;
+    bottom:6px;
     border-radius:15px;
-    width:95%;
+    width:60%;
     height:27px;
-    border:1px solid white; 
-    background:rgba(250,150,150);
-    color:white;
-
+    border:2px solid white; 
 }
 
-button{
+.button{
     position:absolute;
-    top:10.4px;
-    left:80%;
+    bottom:5px;
+    left:84.5%;
     border-radius:15px;
     border:1px solid white; 
+    width:15%;
+    height:70%;
 }
+
+.button:hover{
+  background:pink;
+  color:white;
+}
+
+.button:focus{
+  outline:none;
+  border: 1px solid pink ;
+}
+
+.messages{
+  height:calc(100vh - 96px); /* vh = view height; 100% size of screen*/
+  width:100vw;
+  position:absolute;
+  top:48px;
+  left:0px;
+  display:flex; /*flex allows you to use flex direction, doesn't do anything by itself*/
+  flex-direction:column-reverse; /*show items in reverse order (like with the messages)*/
+  overflow-y:scroll; /*if there's anything overflowing, height of div on vertical access has scrollbar*/ 
+}
+
+.message-wrap{
+  width:100%;
+}
+
+.message{
+  color:white;
+  background:black;
+  margin:5px;
+  border-radius:5px;
+  padding: 3px 6px; 
+}
+
+
+
+
 
 /* width: calc:(100%-8px); */
-
 
 
 
