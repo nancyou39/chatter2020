@@ -72,6 +72,7 @@ header img{
 .name-input{
   color:white;
   height:31px;
+  left:31%;
   border:1px solid white;
   border-radius:14px;
   padding-left:12px;
@@ -87,7 +88,6 @@ header img{
   margin-right:12px;
   font-size:1.1rem;
 }
-
 
 .text-input-wrap{
   position:absolute;
@@ -155,8 +155,8 @@ input{
 }
 
 .message{
-  color:white;
-  background:black;
+  color:rgb(66, 5, 85);
+  background:rgb(255, 243, 81);
   margin:5px;
   border-radius:5px;
   padding: 3px 6px; 
