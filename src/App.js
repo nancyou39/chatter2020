@@ -25,7 +25,7 @@ function Room() {
       <div className="logo-wrap">
         <img className="logo"
           alt="logo"
-          src="https://images.coollogo.com/images/prism-large-green.png" 
+          src="https://logodix.com/logo/70903.png" 
         />
         Chatter
       </div>
