@@ -1,8 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import './App.css'
-import {db, useDB} from './db'
+import {db, useDB} from './db.js'
 import NamePicker from './namePicker'
 import { BrowserRouter, Route } from 'react-router-dom'
+import Camera from 'react-snap-pic'
+import {FiCamera} from 'react-icons/fi'
+import * as firebase from "firebase/app"
+import "firebase/firestore"
+import "firebase/storage"
 
 function App(){
   useEffect(()=>{
@@ -14,12 +19,24 @@ function App(){
   </BrowserRouter>
 }
 
-function Room() {
-  
+function Room(props) {
+  const {room} = props.match.params
   const [name, setName] = useState('')
-  const messages = useDB()
+  const [showCamera, setShowCamera] = useState(false)
+  const messages = useDB(room)
+
+  async function takePicture(img) { //async waits for line of code to be done before running next line
+    setShowCamera(false)
+    const imgID = Math.random().toString(36).substring(7)
+    var storageRef = firebase.storage().ref()
+    var ref = storageRef.child(imgID + '.jpg')
+    await ref.putString(img, 'data_url')
+    db.send({ img: imgID, name, ts: new Date(), room })
+  }
 
   return <main>
+
+    {showCamera && <Camera takePicture={takePicture} />}
 
     <header>
       <div className="logo-wrap">
@@ -33,30 +50,46 @@ function Room() {
     </header>
 
     <div className="messages">
-      {messages.map((m,i)=>{
-        return <div key={i} className="message-wrap"
-          from={m.name===name?'me':'you'}>
-          <div className="message">
-            <div className="msg-name">{m.name}</div>
-            <div className="msg-text">{m.text}</div>
-          </div>
-        </div>
-      })}
+      {messages.map((m,i)=> <Message key={i} m={m} name={name}/>)}
     </div>
 
-    <TextInput onSend={(text)=> {
-      db.send({
-        text, name, ts: new Date()
-      })
-    }} />
+    <TextInput sendMessage={text=> props.onSend(text)} 
+      showCamera={()=>setShowCamera(true)}
+      onSend={(text)=> {
+        db.send({
+          text, name, ts: new Date(), room
+        })
+        }} 
+    />
     
   </main>
 }
 
+
+function Message({m, name}){
+  return <div className="message-wrap"
+    from={m.name===name?'me':'you'}
+    onClick={()=>console.log(m)}>
+    <div className="message">
+      <div className="msg-name">{m.name}</div>
+      <div className="msg-text">{m.text}
+      {m.img && <img src={bucket + m.img + suffix} alt="pic"/>}
+    </div>
+    </div>
+  </div>
+}
+
+const bucket = 'https://firebasestorage.googleapis.com/v0/b/nancyou39-95043.appspot.com/o/'
+const suffix = '.jpg?alt=media'
+
 function TextInput(props){
   var [text, setText] = useState('') 
-  // normal js comment
   return <div className="text-input-wrap">
+
+    <button onClick={props.showCamera}
+      style={{position:'absolute', left:6, right:10}}> 
+      <FiCamera style={{height:35, width:15}} />
+    </button>
     <input 
       value={text} 
       className="text-input"
@@ -69,6 +102,7 @@ function TextInput(props){
         }
       }}
     />
+
     <button onClick={()=> {
       if(text) props.onSend(text)
       setText('')
@@ -99,4 +133,4 @@ function App() {
 
 
 
-// const {room} = props.match.params
+//const {room} = props.match.params

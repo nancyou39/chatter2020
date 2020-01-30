@@ -40,9 +40,6 @@ db.delete = function(id) {
     return store.collection(coll).doc(id).delete()
 }
 
-export { db, useDB }
-
-
 const firebaseConfig = {
     apiKey: "AIzaSyBtBvy3J2U_LxS7IXXrmiWPXXLJCOmYP5w",
     authDomain: "nancyou39-95043.firebaseapp.com",
@@ -56,3 +53,5 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 store = firebase.firestore()
+
+export { db, useDB }

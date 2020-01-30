@@ -5,6 +5,7 @@
 html{
   height:100%;  
 }
+
 body{
   font-family:-apple-system,BlinkMacSystemFont,Helvetica Neue,Helvetica,Arial,sans-serif;
   height:100%;
@@ -72,7 +73,7 @@ header img{
 .name-input{
   color:white;
   height:31px;
-  left:31%;
+  left:42%;
   border:1px solid white;
   border-radius:14px;
   padding-left:12px;
@@ -102,8 +103,8 @@ header img{
 .text-input{
     position:absolute;
     bottom:1px;
-    left:0;
-    width:100%;
+    left:40px;
+    width:calc(100% - 50px);    
     height:40px;
     border:2px solid white;
     background:rgba(250,150,150);
@@ -114,7 +115,7 @@ input{
     left:2%;
     bottom:6px;
     border-radius:15px;
-    width:60%;
+    width:50%;
     height:27px;
     border:2px solid white; 
 }
@@ -122,11 +123,12 @@ input{
 .button{
     position:absolute;
     bottom:5px;
-    left:84.5%;
+    left:82.5%;
     border-radius:15px;
     border:1px solid white; 
     width:15%;
     height:70%;
+
 }
 
 .button:hover{
@@ -151,24 +153,77 @@ input{
 }
 
 .message-wrap{
+  display:flex;
+  justify-content:flex-start;
   width:100%;
+  flex-shrink:0;
+}
+
+.message-wrap[from="me"]{
+  justify-content: flex-end;
 }
 
 .message{
-  color:rgb(66, 5, 85);
-  background:rgb(255, 243, 81);
+  color:rgb(85, 5, 5);
+  background:rgba(250,150,150);
   margin:5px;
   border-radius:5px;
-  padding: 3px 6px; 
+  padding: 6px 10px; 
 }
 
+/*.msg-text{
+  color:white;
+  background:rgba(250,150,150);
+  margin:5px;
+  display: inline-block;
+}
 
+.msg-name{
+  font-size:20px;
+  position:absolute;
+  top:-9px;
+  left:5px;
+}
 
+.edit-username{
+  display: flex;
+  align-items: center;
+}
 
+.name-button{
+  height:29px;
+  margin:0 6px;
+  background:transparent;
+  color:white;
+  font-size:18px;
+  padding:4px;
+  cursor: pointer;
+  border:none;
+  outline:none;
+  border-radius:4px;
+}
+
+.name-button:hover{
+  background:rgba(255,255,255,0.1)
+}
+
+.name-input{
+  color:white;
+  height:31px;
+  border:1px solid white;
+  border-radius:14px;
+  padding-left:12px;
+  background:#1f1e2e;
+  padding-bottom:2px;
+  font-size:12px;
+  outline:none;
+}
+
+.username{
+  display: flex;
+  align-items: top;
+  margin-right:12px;
+  font-size:1.1rem;
+}
 
 /* width: calc:(100%-8px); */
-
-
-
-
-
