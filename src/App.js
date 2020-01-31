@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import './App.css'
+import './media.css'
 import {db, useDB} from './db.js'
 import NamePicker from './namePicker'
 import { BrowserRouter, Route } from 'react-router-dom'
@@ -8,6 +9,7 @@ import {FiCamera} from 'react-icons/fi'
 import * as firebase from "firebase/app"
 import "firebase/firestore"
 import "firebase/storage"
+import Div100vh from 'react-div-100vh'
 
 function App(){
   useEffect(()=>{
@@ -34,7 +36,7 @@ function Room(props) {
     db.send({ img: imgID, name, ts: new Date(), room })
   }
 
-  return <main>
+  return <Div100vh>
 
     {showCamera && <Camera takePicture={takePicture} />}
 
@@ -62,7 +64,7 @@ function Room(props) {
         }} 
     />
     
-  </main>
+  </Div100vh>
 }
 
 

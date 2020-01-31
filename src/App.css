@@ -2,8 +2,11 @@
 *{
   box-sizing:border-box;
 }
-html{
+
+html,body,#root{
   height:100%;  
+  position:fixed;
+  top:0; left:0; right:0; bottom:0;
 }
 
 body{
@@ -35,6 +38,7 @@ header{
   display:flex;
   align-items:center;
   justify-content:space-between;
+  font-size:2rem;
 }
 
 header img{
@@ -142,10 +146,10 @@ input{
 }
 
 .messages{
-  height:calc(100vh - 96px); /* vh = view height; 100% size of screen*/
+  height:calc(100% - 8rem); /* vh = view height; 100% size of screen*/
   width:100vw;
   position:absolute;
-  top:48px;
+  top:4rem;
   left:0px;
   display:flex; /*flex allows you to use flex direction, doesn't do anything by itself*/
   flex-direction:column-reverse; /*show items in reverse order (like with the messages)*/
